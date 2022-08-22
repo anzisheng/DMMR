@@ -131,6 +131,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 data/
+/data/
 models/
 data/*.npy
 data/*.npz
