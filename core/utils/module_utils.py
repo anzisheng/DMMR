@@ -409,15 +409,23 @@ def save_results(setting, data, result, dataset_obj,
         model_results['body_pose'] = body_pose.detach().cpu().numpy()
         orient = np.array(models[idx].global_orient.detach().cpu().numpy())
         pose = np.hstack((orient, model_results['body_pose']))
+
+        for frame in range(32):
+            pose_24 = pose[frame]
+            res_j = {}
+            res_j['cam_trans'] = [0, 0, 0]
+            res_j['smpl_thetas'] = pose_24 #[32, 72]
+            if not osp.exists('output/{:02d}'.format(idx)):
+                os.makedirs('output/{:02d}'.format(idx))
+            filename = 'output/{:02d}/{:08d}.npz'.format(idx, frame)
+            np.savez(filename, results=res_j)
+
+
         res_j = {}
         res_j['smpl_thetas'] = pose #[32, 72]
         filename = 'output/{:08d}.npz'.format(idx)
         np.savez(filename, results=res_j)  # merged_results)
-
-
         #save pose
-
-
         model_results['pose'] = pose
         model_results['pose_embedding'] = pose_embedding.detach().cpu().numpy()
 
