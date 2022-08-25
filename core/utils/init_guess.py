@@ -213,7 +213,7 @@ def init_guess(setting, data, dataset_obj, frames_seq=1, use_torso=False, **kwar
                 setting['pose_embedding'][idx].fill_(0)
 
         # Visualize the initialized results
-        if  False: #anzs
+        if True: #False: #anzs
             import os
             from core.utils.render import Renderer
 

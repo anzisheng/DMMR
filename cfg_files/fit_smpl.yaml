@@ -3,7 +3,7 @@
 data_folder: "data/Eval_DoubleB"
 is_seq: true
 frames: 32          # frame length
-num_people: 2 #anzs        # The number of people in this optimization
+num_people: 4 #anzs        # The number of people in this optimization
 
 opt_cam: true       # Optimize extrinsic camera parameters
 
@@ -75,11 +75,11 @@ ftol: 1e-9
 gtol: 1e-9
 lr: 1.0
 # Max number of optimization iterations
-maxiters: 3 #anzs
+maxiters: 23 #anzs
 
 # fixed parameter
 fix_scale: true
-scale: 1.
+scale: 1
 fix_shape: false
 shape:
 - 0.101861

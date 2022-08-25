@@ -41,8 +41,13 @@ def read_keypoints(keypoint_fn, num_people, num_joint):
         data = json.load(keypoint_file)
     valid = 1
     keypoints = []
-    flags = np.zeros((len(data['people'])))
-    for idx, person_data in enumerate(data['people']):
+    flags = np.zeros(num_people) # anzs np.zeros((len(data['people'])))
+    #for idx, person_data in enumerate(data['people']): #anzs
+    for idx in range(num_people):
+        person_data = None
+        if(idx < len(data['people'])):
+            person_data = data['people'][idx]
+
         if person_data is None:
             body_keypoints = np.zeros((num_joint, 3),
                                     dtype=np.float32)
